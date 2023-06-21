@@ -1,0 +1,25 @@
+{
+  "name": "starter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "frontend": "http-server",
+    "backend": "json-server -w db.json",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express": "^4.18.2",
+    "http-server": "^0.12.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.0",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  },
+  "description": "1. Run `npm run backend` in the terminal to start the server. 2. Open a second terminal (by clicking the `[+]` icon) and run `npm run frontend` to open a simple page that fetches data from our backend",
+  "main": "index.js",
+  "author": "Jisu",
+  "license": "ISC"
+}
