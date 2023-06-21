@@ -1,10 +1,17 @@
-const mongoose = require("mongoose");
 const User = require("../schema/user.schema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const mainRoute = (req, res) => {
-  res.send("hello world");
+
+const mainRoute = async (req, res) => {
+  try {
+    const user = await User.find({});
+    res.send(user)
+  } catch (error) {
+    res.status(500).json({
+      error: "There ws a problem in sever side",
+    });
+  }
 };
 const saveData = async (req, res) => {
   try {
@@ -23,15 +30,13 @@ const saveData = async (req, res) => {
     console.log(err);
   }
 };
-
 const loginUser = async (req, res) => {
   try {
     // This will search the user using username
     const user = await User.find({
       username: req.body.username,
     });
-    // console.log(user);
-    if (user & (user.length > 0)) {
+    if (user && user.length > 0) {
       // This will compare the password thats come with body
       const isValidPassword = await bcrypt.compare(
         req.body.password,
@@ -53,20 +58,18 @@ const loginUser = async (req, res) => {
         });
       } else {
         res.status(401).json({
-          error: "Authetication failed!",
+          error: "Authentication failed !",
         });
       }
     } else {
       res.status(401).json({
-        error: "Authentication was failed!",
+        error: "Authentication was failed !!",
       });
     }
   } catch (err) {
-    console.log("isValidPassword");
-
     console.log(err);
     res.status(401).json({
-      error: "Authentication was failed!",
+      error: "Authentication was failed !!!",
     });
   }
 };
