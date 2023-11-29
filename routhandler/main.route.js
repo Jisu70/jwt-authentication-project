@@ -11,5 +11,6 @@ router.get('/', checkLogin, mainController.mainRoute);
 router.post('/savedata', mainController.saveData);
 // login 
 router.post('/login', mainController.loginUser);
+router.get('/retrivetoken', mainController.retrieveToken);
 
 module.exports = router;
